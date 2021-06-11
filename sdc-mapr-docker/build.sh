@@ -5,12 +5,11 @@
 
 # Image Name
 IMAGE_NAME=<YOUR IMAGE NAME>
-
 # SDC Version
-SDC_VERSION=3.18.1
+SDC_VERSION=3.22.3
 
 # Base SDC URL 
-BASE_SDC_URL=https://s3-us-west-2.amazonaws.com/nightly.streamsets.com/datacollector/3.18/3.18.1/tarball
+BASE_SDC_URL=https://s3-us-west-2.amazonaws.com/nightly.streamsets.com/datacollector/3.22/3.22.3/tarball
 
 # Base Enterprise Stage Lib URL 
 BASE_ESL_URL=http://archives.streamsets.com/datacollector/latest/tarball/enterprise
@@ -22,7 +21,7 @@ BASE_ESL_URL=http://archives.streamsets.com/datacollector/latest/tarball/enterpr
 SDC_STAGE_LIBS="streamsets-datacollector-mapr_6_1-lib streamsets-datacollector-mapr_6_1-mep6-lib streamsets-datacollector-jython_2_7-lib"
 
 # A space separated list of enterprise stage libs to download
-SDC_ENTERPRISE_STAGE_LIBS="streamsets-datacollector-snowflake-lib-1.5.0"
+SDC_ENTERPRISE_STAGE_LIBS="streamsets-datacollector-snowflake-lib-1.7.0"
 
 # Use a tmp directory to unpack the downloaded stage libs
 mkdir -p tmp-stage-libs
@@ -59,5 +58,5 @@ docker build -t $IMAGE_NAME .
 rm -rf streamsets-libs
 
 # Push the image
-docker push $IMAGE_NAME
+# docker push $IMAGE_NAME
 

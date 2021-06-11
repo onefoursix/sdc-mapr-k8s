@@ -15,9 +15,9 @@
 FROM ubuntu:16.04
 LABEL maintainer="Mark Brooks <mark@streamsets.com>"
 
-ARG SDC_VERSION=3.18.1
-ARG SDC_TARBALL=streamsets-datacollector-core-3.18.1.tgz
-ARG SDC_URL=https://s3-us-west-2.amazonaws.com/nightly.streamsets.com/datacollector/3.18/3.18.1/tarball/${SDC_TARBALL}
+ARG SDC_VERSION=3.22.3
+ARG SDC_TARBALL=streamsets-datacollector-core-3.22.3.tgz
+ARG SDC_URL=https://s3-us-west-2.amazonaws.com/nightly.streamsets.com/datacollector/3.22/3.22.3/tarball/${SDC_TARBALL}
 
 RUN apt-get -y update
 RUN apt-get -y install curl
@@ -78,15 +78,15 @@ COPY sdc-configure.sh *.tgz /tmp/
 RUN /tmp/sdc-configure.sh
 
 # Copy files in $PROJECT_ROOT/resources dir to the SDC_RESOURCES dir.
-COPY resources/ ${SDC_RESOURCES}/
-RUN chown -R sdc:sdc ${SDC_RESOURCES}/
+# COPY resources/ ${SDC_RESOURCES}/
+# RUN chown -R sdc:sdc ${SDC_RESOURCES}/
 
 # Copy local "sdc-extras" libs to STREAMSETS_LIBRARIES_EXTRA_DIR.
 # Local files should be placed in appropriate stage lib subdirectories.  For example
 # to add a JDBC driver like my-jdbc.jar to the JDBC stage lib, the local file my-jdbc.jar
 # should be at the location $PROJECT_ROOT/sdc-extras/streamsets-datacollector-jdbc-lib/lib/my-jdbc.jar
-COPY sdc-extras/ ${STREAMSETS_LIBRARIES_EXTRA_DIR}/
-RUN chown -R sdc:sdc ${STREAMSETS_LIBRARIES_EXTRA_DIR}/
+# COPY sdc-extras/ ${STREAMSETS_LIBRARIES_EXTRA_DIR}/
+# RUN chown -R sdc:sdc ${STREAMSETS_LIBRARIES_EXTRA_DIR}/
 
 # Copy the stage libs and enterprise stage libs
 COPY --chown=sdc:sdc streamsets-libs ${SDC_DIST}/streamsets-libs
