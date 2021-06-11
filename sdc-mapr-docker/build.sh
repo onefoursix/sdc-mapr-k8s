@@ -58,5 +58,5 @@ docker build -t $IMAGE_NAME .
 rm -rf streamsets-libs
 
 # Push the image
-# docker push $IMAGE_NAME
+docker push $IMAGE_NAME
 
